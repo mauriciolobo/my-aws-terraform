@@ -54,4 +54,4 @@ jobs:
         run: terraform init -backend-config='bucket=${{ secrets.BUCKET_NAME }}'
 
       - name: Terraform Destroy
-        run: terraform destroy
+        run: terraform destroy -auto-approve
