@@ -5,6 +5,12 @@ terraform {
       version = "~> 3.0"
     }
   }
+  backend "s3" {
+    bucket = ""
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+
 }
 
 provider "aws" {}
@@ -34,8 +40,8 @@ resource "aws_instance" "web" {
   }
 }
 
-output public_dns {
-  value       = aws_instance.web.public_dns  
+output "public_dns" {
+  value       = aws_instance.web.public_dns
   description = "Public DNS"
 }
 
